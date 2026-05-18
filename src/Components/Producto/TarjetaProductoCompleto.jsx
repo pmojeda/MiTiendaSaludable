@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-export default function TarjetaProductoCompleto({ id, imagen, nombre, descripcion, precio, stock }) {
+export default function TarjetaProductoCompleto({ id, imagen, nombre, detalle, precio, stock }) {
   const [cantidad, setCantidad] = useState(0);
   const [esFavorito, setEsFavorito] = useState(false);
 
@@ -37,7 +37,7 @@ export default function TarjetaProductoCompleto({ id, imagen, nombre, descripcio
         </h3>
 
         <p className="mb-1 text-xs text-gray-600">
-          {descripcion}       </p>
+          {detalle}       </p>
 
         <p className="mb-1 text-sm text-gray-600">
           Stock: {stock}

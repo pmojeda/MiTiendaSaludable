@@ -7,16 +7,17 @@ function FormularioContainer() {
     nombre: "",
     precio: "",
     stock: "",
-    descripcion: "",
+    detalle: "",
+    destacado: false,
   });
 
   const [imagenFile, setImagenFile] = useState(null);
 
   const manejarCambio = (evento) => {
-    const { name, value } = evento.target;
+    const { name, value, type, checked } = evento.target;
     setDatosForm({
       ...datosForm,
-      [name]: value,
+      [name]: type === "checkbox" ? checked : value,
     });
   };
 
@@ -62,6 +63,7 @@ function FormularioContainer() {
 
             // Por el momento hacemos un console.log
             console.log('Enviando los siguientes datos COMPLETOS a la API:', productoCompleto);
+            alert("Producto agregado con éxito.");
         } else {
             throw new Error('La subida de la imagen a Imgbb falló.');
         }

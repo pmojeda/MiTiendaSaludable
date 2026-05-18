@@ -31,12 +31,11 @@ function FormularioProducto({ datosForm, manejarCambio, manejarEnvio, manejarCam
       </div>
 
       <div className="my-3">
-        <label className="text-sm font-semibold">Descripción:</label>
-        <input
-          type="text"
+        <label className="text-sm font-semibold">Detalle:</label>
+        <textarea
           placeholder="Ej: nueces y semillas de calidad y sabor únicos"
-          name="descripcion"
-          value={datosForm.descripcion}
+          name="detalle"
+          value={datosForm.detalle}
           onChange={manejarCambio}
           className="border mx-2 w-90"
         />
@@ -63,6 +62,17 @@ function FormularioProducto({ datosForm, manejarCambio, manejarEnvio, manejarCam
           value={datosForm.stock}
           onChange={manejarCambio}
           className="border mx-2"
+        />
+      </div>
+
+      <div className="my-3">
+        <label className="text-sm font-semibold">Producto destacado?:</label>
+        <input
+          type="checkbox"
+          name="destacado"
+          checked={datosForm.destacado}
+          onChange={manejarCambio}
+          className="mx-2"
         />
       </div>
 

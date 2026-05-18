@@ -1,8 +1,8 @@
 import './App.css'
 import Layout from './Components/Layout/Layout';
-import { ItemListContainer } from './Components/ItemListContainer/ItemListContainer';
+import ItemListContainer from './Components/ItemListContainer/ItemListContainer';
 import Contador from './Components/Contador/Contador';
-import Bienvenida from './Components/Bienvenida/Bienvenida';
+import Inicio from './Components/Inicio/Inicio';
 import Contacto from './Components/Contacto/Contacto';
 import Carrito from './Components/Carrito/Carrito';
 import { Routes, Route } from 'react-router-dom';
@@ -14,8 +14,8 @@ function App() {
     <>
       <Routes>
           <Route element={<Layout />} >
-            <Route path="/" element={<Bienvenida />} /> 
-            <Route path="/productos" element={<ItemListContainer Mensaje="Todos los productos" />} />
+            <Route path="/" element={<Inicio />} /> 
+            <Route path="/productos" element={<ItemListContainer Mensaje="Nuestros productos" />} />
             <Route path="/contacto" element={<Contacto />} /> 
             <Route path="/carrito" element={<Carrito />} /> 
             <Route path="/productos/:id" element={<ItemDetailContainer />} />

@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
 
-export default function TarjetaProducto({ id, imagen, nombre, descripcion, precio, stock }) {
+export default function TarjetaProducto({ id, imagen, nombre, detalle, precio, stock }) {
   const [cantidad, setCantidad] = useState(0);
   const [esFavorito, setEsFavorito] = useState(false);
 
@@ -38,7 +38,7 @@ export default function TarjetaProducto({ id, imagen, nombre, descripcion, preci
         </Link>
 
         <Link to={`/productos/${id}`} className="mb-1 text-xs text-gray-600 hover:text-indigo-600 transition-colors">
-          <p>{descripcion.substring(0, 40)}...</p>
+          <p>{detalle.substring(0, 40)}...</p>
         </Link>
 
         <p className="mb-1 text-sm text-gray-600">

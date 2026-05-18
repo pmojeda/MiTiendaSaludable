@@ -1,7 +1,7 @@
 import ItemList from "../ItemList/ItemList";
 import { useEffect, useState } from "react";
 
-export function ItemListContainer({ Mensaje }) {
+function ItemListContainer({ Mensaje, Destacado }) {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
@@ -10,7 +10,13 @@ export function ItemListContainer({ Mensaje }) {
       try {
         const response = await fetch('/data/productos.json');
         const data = await response.json();
-        setProductos(data);
+
+        if (Destacado) {
+          const productosDestacados = data.filter(producto => producto.destacado);
+          setProductos(productosDestacados);
+        } else {
+          setProductos(data);
+        }
       } catch (error) {
         console.error('Error cargando productos:', error);
       }
@@ -29,3 +35,5 @@ export function ItemListContainer({ Mensaje }) {
     </div>
   );
 }
+
+export default ItemListContainer;
