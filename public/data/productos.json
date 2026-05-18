@@ -1,0 +1,7 @@
+[
+    { "id": "1234", "nombre": "Hamburguesas Quinoa", "descripcion": "Hamburguesas Quinoa Mediterranea x 400gr (4u) - CASA VEGANA", "precio": 12000, "stock": 15, "imagen": "/images/quinoa.webp" },
+    { "id": "2344", "nombre": "Kombucha", "descripcion": "Kombucha Sabor Naranja y Mango x 473 ml - LIVE KOMBU", "precio": 450000, "stock": 25, "imagen": "/images/kombucha.webp" },
+    { "id": "2545", "nombre": "Hummus de Garbanzos", "descripcion": "Hummus de Garbanzos x 220gr - FELICES LAS VACAS", "precio": 15000, "stock": 50, "imagen": "/images/hummus.webp"  },
+    { "id": "2346", "nombre": "Granola", "descripcion": "Granola Almendra y Arándanos x 1 Kg - INTEGRA", "precio": 450000, "stock": 25, "imagen": "/images/granola.webp" },
+    { "id": "2600", "nombre": "Dulce de Leche", "descripcion": "Untable de Almendras sabor Dulce de Leche x 250gr - FELICES LAS VACAS", "precio": 15000, "stock": 50, "imagen": "/images/dulcedeleche.webp"  }
+  ]
