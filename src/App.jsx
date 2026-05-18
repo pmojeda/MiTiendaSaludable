@@ -7,6 +7,7 @@ import Contacto from './Components/Contacto/Contacto';
 import Carrito from './Components/Carrito/Carrito';
 import { Routes, Route } from 'react-router-dom';
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
+import FormularioContainer from './Components/FormularioProducto/FormularioContainer';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
             <Route path="/contacto" element={<Contacto />} /> 
             <Route path="/carrito" element={<Carrito />} /> 
             <Route path="/productos/:id" element={<ItemDetailContainer />} />
+            <Route path="/altaproducto" element={<FormularioContainer />} />
           </Route>
       </Routes>
     </>)

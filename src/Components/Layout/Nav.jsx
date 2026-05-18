@@ -19,6 +19,9 @@ function Nav() {
                     <Link to="/productos">Productos</Link>
                 </li>
                 <li>
+                    <Link to="/altaproducto">Agregar Producto</Link>
+                </li>
+                <li>
                     <Link to="/contacto">Contacto</Link>
                 </li>
                 <li>
