@@ -1,9 +1,13 @@
 import { Link } from "react-router-dom";
 import { useState } from "react";
+import { useCart } from "../../context/CartContext";
 
 export default function TarjetaProducto({ id, imagen, nombre, detalle, precio, stock }) {
   const [cantidad, setCantidad] = useState(0);
   const [esFavorito, setEsFavorito] = useState(false);
+  const { addToCart } = useCart();
+
+  const producto = { id, nombre, precio, stock, imagen, detalle };
 
   const incrementar = () => {
     if (cantidad < stock) {
@@ -17,6 +21,7 @@ export default function TarjetaProducto({ id, imagen, nombre, detalle, precio, s
   };
 
   const agregarAlCarrito = () => {
+    addToCart(producto, cantidad);
     alert(`Has agregado ${cantidad} ${nombre}(s) al carrito`);
   };
 

@@ -1,6 +1,10 @@
 import { Link } from "react-router-dom";
+import { useCart } from "../../context/CartContext";
 
 function Nav() {
+    const { getCartQuantity } = useCart();
+    const cantidad = getCartQuantity();
+
     return (
         <nav className="NavTienda">
             <ul
@@ -25,7 +29,7 @@ function Nav() {
                     <Link to="/contacto">Contacto</Link>
                 </li>
                 <li>
-                    <Link to="/carrito">Carrito</Link>
+                    <Link to="/carrito">Carrito 🛒 {cantidad > 0 && <span>({cantidad})</span>}</Link>
                 </li>
             </ul>
         </nav>
