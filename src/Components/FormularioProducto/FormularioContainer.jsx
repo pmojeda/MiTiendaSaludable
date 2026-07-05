@@ -1,23 +1,34 @@
 import { useState } from "react";
 import FormularioProducto from "./FormularioProducto";
+import {getFirestore, collection, addDoc} from "firebase/firestore";
 
+/**
+ * @deprecated
+ * Este componente fue reemplazado por el uso de <Gestion />.
+ * No utilizar en desarrollos nuevos.
+ */
 function FormularioContainer() {
   // Implementación del contenedor del formulario
+  
   const [datosForm, setDatosForm] = useState({
+    id: "",
     nombre: "",
     precio: "",
     stock: "",
     detalle: "",
     destacado: false,
+    categoria: "",
+    imagen: "",
   });
-
+  
   const [imagenFile, setImagenFile] = useState(null);
 
   const manejarCambio = (evento) => {
     const { name, value, type, checked } = evento.target;
+
     setDatosForm({
       ...datosForm,
-      [name]: type === "checkbox" ? checked : value,
+      [name]: type === "checkbox" ? checked : name === "precio" ? parseFloat(value) : value,
     });
   };
 
@@ -58,11 +69,19 @@ function FormularioContainer() {
             const productoCompleto = {
                 ...datosForm,
                 // Agregamos la URL obtenida
-                urlImagen: datosImgbb.data.url
+                imagen: datosImgbb.data.url
             }
 
             // Por el momento hacemos un console.log
             console.log('Enviando los siguientes datos COMPLETOS a la API:', productoCompleto);
+
+            // --- Lógica para guardar el producto en Firestore ---
+            const db = getFirestore();
+            const productosCollection = collection(db, "productos");
+
+            await addDoc(productosCollection, productoCompleto);
+            console.log("Producto agregado a Firestore con éxito.");
+
             alert("Producto agregado con éxito.");
         } else {
             throw new Error('La subida de la imagen a Imgbb falló.');

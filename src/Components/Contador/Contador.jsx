@@ -3,7 +3,7 @@ import { useState } from "react";
 function Contador() {
   const [contador, setContador] = useState(0);
   const incrementar = () => {
-    setContador(contador + 1); //¡Usamos la función para actualizar el estado!
+    setContador(contador + 1); 
   };
 
   const decrementar = () => {

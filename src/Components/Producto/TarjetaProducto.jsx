@@ -3,17 +3,20 @@ import { useState } from "react";
 import { useCart } from "../../context/CartContext";
 
 export default function TarjetaProducto({ id, imagen, nombre, detalle, precio, stock }) {
-  const [cantidad, setCantidad] = useState(0);
-  const [esFavorito, setEsFavorito] = useState(false);
-  const { addToCart } = useCart();
-
   const producto = { id, nombre, precio, stock, imagen, detalle };
 
+  const [cantidad, setCantidad] = useState(0);
+  const [esFavorito, setEsFavorito] = useState(false);
+  const { addToCart, getQuantityById } = useCart();
+
+  const cantidadEnCarrito = getQuantityById(id);
+
   const incrementar = () => {
-    if (cantidad < stock) {
+    if (cantidad + cantidadEnCarrito < stock) {
       setCantidad(cantidad + 1);
     }
   };
+
   const decrementar = () => {
     if (cantidad > 0) {
       setCantidad(cantidad - 1);
@@ -21,8 +24,11 @@ export default function TarjetaProducto({ id, imagen, nombre, detalle, precio, s
   };
 
   const agregarAlCarrito = () => {
-    addToCart(producto, cantidad);
-    alert(`Has agregado ${cantidad} ${nombre}(s) al carrito`);
+    if (cantidad > 0) {
+      addToCart(producto, cantidad);
+      alert(`Has agregado ${cantidad} ${nombre}(s) al carrito`);
+      setCantidad(0);
+    }
   };
 
   const toggleFavorito = () => {
@@ -30,7 +36,7 @@ export default function TarjetaProducto({ id, imagen, nombre, detalle, precio, s
   };
 
   return (
-    <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl h-80 w-60 mx-auto my-3">
+    <div className="overflow-hidden rounded-3xl border border-gray-200 bg-white shadow-md transition-all duration-300 hover:-translate-y-1 hover:shadow-xl h-90 w-60 mx-auto my-3">
       <img
         src={imagen}
         alt={nombre}
@@ -81,6 +87,7 @@ export default function TarjetaProducto({ id, imagen, nombre, detalle, precio, s
         <button className="w-full rounded-xl bg-black px-4 py-1 text-sm font-semibold text-white transition-colors duration-300 hover:bg-gray-800" onClick={agregarAlCarrito}>
           Agregar al carrito
         </button>
+        <p className="text-sm">Agregaste {cantidadEnCarrito} unidades al Carrito</p>
       </div>
     </div>
   );

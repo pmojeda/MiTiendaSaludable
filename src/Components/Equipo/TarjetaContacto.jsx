@@ -1,4 +1,6 @@
 function TarjetaContacto({ contacto }) {
+console.log("Contacto recibido:", contacto);
+
  return (
     <div className="max-w-xs rounded-xl border border-gray-500 bg-white p-5 shadow-sm text-center">
       {/* Imagen */}
@@ -16,10 +18,10 @@ function TarjetaContacto({ contacto }) {
       
       {/* Email */}
       <a 
-        href={`mailto:${contacto.email}`} 
+        href={`${contacto.linkedin}`} 
         className="mt-2 inline-block text-xs text-gray-500 font-mono hover:text-indigo-600 transition-colors"
       >
-        {contacto.email}
+        {contacto.linkedin}
       </a>
     </div>
   );

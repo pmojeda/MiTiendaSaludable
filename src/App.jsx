@@ -8,6 +8,9 @@ import Carrito from './Components/Carrito/Carrito';
 import { Routes, Route } from 'react-router-dom';
 import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailContainer';
 import FormularioContainer from './Components/FormularioProducto/FormularioContainer';
+import ProductosNacionales from './Components/ProductosNacionales/ProductosNacionales';
+import ProductosNacionalesDetalle from './Components/ProductosNacionales/ProductosNacionalesDetalle';
+import Gestion from './Components/Gestion/Gestion';
 
 function App() {
   return (
@@ -19,7 +22,9 @@ function App() {
             <Route path="/contacto" element={<Contacto />} /> 
             <Route path="/carrito" element={<Carrito />} /> 
             <Route path="/productos/:id" element={<ItemDetailContainer />} />
-            <Route path="/altaproducto" element={<FormularioContainer />} />
+            <Route path="/gestion" element={<Gestion />} />
+            <Route path="/productosnacionales" element={<ProductosNacionales />} />
+            <Route path="/productosnacionales/:idParam" element={<ProductosNacionalesDetalle />} />
           </Route>
       </Routes>
     </>)
