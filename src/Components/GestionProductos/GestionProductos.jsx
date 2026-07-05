@@ -64,7 +64,7 @@ function GestionProductos() {
   };
 
   const handleEdit = (producto) => {
-    setProductoEditando(producto);
+    setProductoEditando(producto); 
   };
 
   const manejarEnvio = async (evento) => {
@@ -119,7 +119,9 @@ function GestionProductos() {
     try {
       if (productoEditando) {
         // Actualizamos el producto existente
+        console.log("Actualizando productoEditando:", productoEditando);
         const docRef = doc(db, "productos", productoEditando.id);
+        console.log("ProductoCompleto:", productoCompleto);
         await updateDoc(docRef, productoCompleto);
         console.log("Producto actualizado en Firestore con éxito.");
         setProductoEditando(null); // Limpiamos el estado de edición

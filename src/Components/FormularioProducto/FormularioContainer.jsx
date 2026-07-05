@@ -11,7 +11,6 @@ function FormularioContainer() {
   // Implementación del contenedor del formulario
   
   const [datosForm, setDatosForm] = useState({
-    id: "",
     nombre: "",
     precio: "",
     stock: "",

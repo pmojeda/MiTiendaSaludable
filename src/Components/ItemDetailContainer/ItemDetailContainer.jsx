@@ -14,7 +14,7 @@ function ItemDetailContainer() {
       try {
         const fetchProductos = collection(db, "productos");
         const productosSnapshot = await getDocs(fetchProductos);
-        const data = productosSnapshot.docs.map((doc) => doc.data());
+        const data = productosSnapshot.docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
         console.log("Productos cargados:", data);
         console.log("ID del producto a buscar:", id);
