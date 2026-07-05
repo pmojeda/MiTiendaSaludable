@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import { db } from "../../firebase/config";
 import FormularioProducto from "../FormularioProducto/FormularioProducto";
 import {
-  getFirestore,
   collection,
   getDocs,
   deleteDoc,
@@ -11,7 +10,7 @@ import {
   addDoc,
 } from "firebase/firestore";
 
-function Gestion() {
+function GestionProductos() {
   const [productos, setProductos] = useState([]);
   const [productoEditando, setProductoEditando] = useState(null);
   //const [estadoInicialForm, setEstadoInicialForm] = useState({
@@ -127,7 +126,7 @@ function Gestion() {
         setDatosForm(estadoInicialForm); // Reiniciamos el formulario después de actualizar
       } else {
         // Agregamos el nuevo producto
-        const db = getFirestore();
+        
         const productosCollection = collection(db, "productos");
         await addDoc(productosCollection, productoCompleto);
         console.log("Producto agregado a Firestore con éxito.");
@@ -211,4 +210,4 @@ function Gestion() {
   );
 }
 
-export default Gestion;
+export default GestionProductos;

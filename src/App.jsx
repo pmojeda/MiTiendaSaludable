@@ -10,7 +10,8 @@ import ItemDetailContainer from './Components/ItemDetailContainer/ItemDetailCont
 import FormularioContainer from './Components/FormularioProducto/FormularioContainer';
 import ProductosNacionales from './Components/ProductosNacionales/ProductosNacionales';
 import ProductosNacionalesDetalle from './Components/ProductosNacionales/ProductosNacionalesDetalle';
-import Gestion from './Components/Gestion/Gestion';
+import GestionProductos from './Components/GestionProductos/GestionProductos';
+import GestionCupones from './Components/GestionCupones/GestionCupones';
 
 function App() {
   return (
@@ -22,7 +23,8 @@ function App() {
             <Route path="/contacto" element={<Contacto />} /> 
             <Route path="/carrito" element={<Carrito />} /> 
             <Route path="/productos/:id" element={<ItemDetailContainer />} />
-            <Route path="/gestion" element={<Gestion />} />
+            <Route path="/gestionproductos" element={<GestionProductos />} />
+            <Route path="/gestioncupones" element={<GestionCupones />} />
             <Route path="/productosnacionales" element={<ProductosNacionales />} />
             <Route path="/productosnacionales/:idParam" element={<ProductosNacionalesDetalle />} />
           </Route>

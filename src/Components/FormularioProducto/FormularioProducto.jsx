@@ -27,6 +27,19 @@ function FormularioProducto({
         />
       </div>
 
+     
+      <div className="my-3">
+        <label className="text-sm font-semibold">Categoría:</label>
+        <input
+          type="text"
+          placeholder="Ej: nueces y semillas"
+          name="categoria" // Atributo clave para identificar el input
+          value={datosForm.categoria}
+          onChange={manejarCambio}
+          className="border mx-2"
+        />
+      </div> 
+
       <div className="my-3">
         <label className="text-sm font-semibold">Detalle:</label>
         <textarea

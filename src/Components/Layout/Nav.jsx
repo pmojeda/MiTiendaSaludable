@@ -23,7 +23,7 @@ function Nav() {
                     <Link to="/productos">Productos</Link>
                 </li>
                 <li>
-                    <Link to="/gestion">Gestión</Link>
+                    <Link to="/gestionproductos">Gestión de Productos</Link>
                 </li>
                 <li>
                     <Link to="/contacto">Contacto</Link>
