@@ -6,7 +6,7 @@ Aplicación de tienda online desarrollada con React, Vite, React Router DOM, Fir
 
 Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
-- Node.js 18 o superior (recomendado 20+)
+- Node.js 18 o superior 
 - npm 9 o superior
 - Git
 - Un navegador moderno como Chrome, Edge o Firefox
@@ -43,21 +43,12 @@ Para generar una versión lista para publicar:
 npm run build
 ```
 
-## Vista previa del build
-
-Para previsualizar la versión compilada localmente:
-
-```bash
-npm run preview
-```
-
 ## Configuración adicional
 
-El proyecto utiliza Firebase para la base de datos. La configuración se encuentra en el archivo src/firebase/config.js. Si cambias de proyecto de Firebase, deberás actualizar ese archivo con tus propias credenciales.
+El proyecto utiliza Firebase para la base de datos. La configuración se encuentra en el archivo src/firebase/config.js. 
 
 ## Scripts disponibles
 
 - npm run dev: inicia el servidor de desarrollo
 - npm run build: compila la aplicación para producción
-- npm run preview: sirve la versión compilada localmente
 - npm run lint: analiza el código con ESLint
