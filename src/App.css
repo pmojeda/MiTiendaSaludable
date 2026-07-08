@@ -212,7 +212,32 @@ h1, h2, h3, h4, h5, h6 {
   color: #1f3f2a;
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 768px) {
   ul{
-    gap: 18px !important;  };
+    gap: 18px !important;  
+  }
+
+  .HeaderTienda{
+    font-size: 18px !important;
+  }
+
+  .NavTienda{
+    padding: 2px !important;
+    font-size: 10px !important;
+  }
+}
+
+@media (max-width: 400px) {
+  ul{
+    gap: 10px !important;  
+  }
+
+  .HeaderTienda{
+    font-size: 16px !important;
+  }
+
+  .NavTienda{
+    padding: 2px !important;
+    font-size: 8px !important;
+  }
 }
