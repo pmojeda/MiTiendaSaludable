@@ -1,5 +1,4 @@
 function TarjetaContacto({ contacto }) {
-console.log("Contacto recibido:", contacto);
 
  return (
     <div className="max-w-xs rounded-xl border border-gray-500 bg-white p-5 shadow-sm text-center">

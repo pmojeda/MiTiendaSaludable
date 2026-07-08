@@ -9,10 +9,12 @@ import {
   updateDoc,
   addDoc,
 } from "firebase/firestore";
+import ConfirmDialog from "../ConfirmDialog/ConfirmDialog";
 
 function GestionProductos() {
   const [productos, setProductos] = useState([]);
   const [productoEditando, setProductoEditando] = useState(null);
+  const [productoEliminando, setProductoEliminando] = useState(null);
   //const [estadoInicialForm, setEstadoInicialForm] = useState({
   const estadoInicialForm = {
     nombre: "",
@@ -25,6 +27,7 @@ function GestionProductos() {
   };
   const [datosForm, setDatosForm] = useState(estadoInicialForm);
   const [imagenFile, setImagenFile] = useState(null);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     if (productoEditando) {
@@ -49,6 +52,12 @@ function GestionProductos() {
     obtenerProductos();
   }, []);
 
+  const abrirModal = (producto) => {
+    setProductoEliminando(producto);
+    setOpen(true);
+  };
+
+  /*
   const handleDelete = async (id) => {
     const confirmacionDelete = window.confirm(
       "¿Estás seguro de que deseas eliminar este producto?",
@@ -62,6 +71,20 @@ function GestionProductos() {
       alert("Producto eliminado correctamente.");
     }
   };
+*/
+  const eliminarProducto = async () => {
+    try {
+      const docRef = doc(db, "productos", productoEliminando.id);
+      await deleteDoc(docRef);
+      setProductos(productos.filter((producto) => producto.id !== productoEliminando.id));
+      setOpen(false);
+      setProductoEliminando(null);
+      alert("Producto eliminado correctamente.");
+    } catch (error) {
+      console.error("Error eliminando producto:", error);
+      alert("Hubo un error al eliminar el producto.");
+    }
+  };
 
   const handleEdit = (producto) => {
     setProductoEditando(producto);
@@ -71,6 +94,11 @@ function GestionProductos() {
     evento.preventDefault();
     console.log("Enviando los siguientes datos a la API:", datosForm);
     let urlImagen = datosForm.imagen; // Inicializamos con la URL existente
+
+    if (datosForm.nombre.trim() === "" || datosForm.precio === "" || datosForm.stock === "" || datosForm.detalle.trim() === "" || datosForm.categoria.trim() === "") {
+        alert("Por favor, completa todos los campos del formulario antes de enviar.");
+        return;
+    }
 
     // Validamos que el usuario haya seleccionado una imagen
     if (imagenFile) {
@@ -189,7 +217,7 @@ function GestionProductos() {
             <strong>{producto.nombre}</strong> - ${producto.precio.toFixed(2)} -
             Stock: {producto.stock}
             <button
-              onClick={() => handleDelete(producto.id)}
+              onClick={() => abrirModal(producto)}
               className="ml-2 bg-red-500 text-white px-2 py-1 rounded"
             >
               Eliminar
@@ -214,6 +242,21 @@ function GestionProductos() {
           </button>
         </div>
       )}
+
+      <hr />
+
+      <ConfirmDialog
+        open={open}
+        title="Eliminar producto"
+        message={
+          productoEliminando &&
+          `¿Está seguro de que desea eliminar "${productoEliminando.nombre}"?`
+        }
+        confirmText="Eliminar"
+        cancelText="Cancelar"
+        onConfirm={eliminarProducto}
+        onCancel={() => setOpen(false)}
+      />
     </div>
   );
 }
